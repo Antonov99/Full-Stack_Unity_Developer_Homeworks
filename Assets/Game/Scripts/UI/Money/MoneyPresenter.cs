@@ -19,19 +19,13 @@ namespace Game.UI
 
         public void Initialize()
         {
-            _moneyStorage.OnMoneyChanged += Update;
-            Update(_moneyStorage.Money, 0);
+            _moneyStorage.OnMoneyChanged += _moneyView.UpdateMoney;
+            _moneyView.SetMoney(_moneyStorage.Money.ToString());
         }
-
-        private void Update(int newValue, int previousValue)
-        {
-            var text = newValue.ToString();
-            _moneyView.UpdateMoney(text);
-        }
-
+        
         public void Dispose()
         {
-            _moneyStorage.OnMoneyChanged -= Update;
+            _moneyStorage.OnMoneyChanged -= _moneyView.UpdateMoney;
         }
     }
 }

@@ -856,8 +856,10 @@ MonoBehaviour:
   - {fileID: 1948709303}
   - {fileID: 1089690731}
   - {fileID: 293420504}
+  _transform: {fileID: 1570046361}
+  _particleAnimator: {fileID: 1465214280}
   _moneyView: {fileID: 619220231}
-  _popup: {fileID: 1052078977217180747}
+  _popupView: {fileID: 1052078977217180747}
 --- !u!1 &619220228 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7207275897469232668, guid: 922a3fcd633baa0498344270e9eabd2a, type: 3}
@@ -1881,6 +1883,11 @@ Transform:
   - {fileID: 641865333}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &1570046361 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6204055655084186918, guid: 922a3fcd633baa0498344270e9eabd2a, type: 3}
+  m_PrefabInstance: {fileID: 6121086404576301247}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1802329536 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5364966909751367753, guid: c6f3aabda10ed1841ba1c1a8999ef4ba, type: 3}

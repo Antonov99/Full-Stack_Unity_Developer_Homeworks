@@ -2,6 +2,7 @@
 {
     public interface IMoneyView
     {
-        public void UpdateMoney(string money);
+        public void UpdateMoney(int newValue, int previousValue);
+        public void SetMoney(string money);
     }
 }

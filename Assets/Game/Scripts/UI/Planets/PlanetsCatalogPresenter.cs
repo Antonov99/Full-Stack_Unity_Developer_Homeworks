@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Game.UI.Planets;
 using JetBrains.Annotations;
 using Modules.Planets;
 using Zenject;
 
-namespace Game.UI.PlanetsCatalog
+namespace Game.UI
 {
     [UsedImplicitly]
-    public class CatalogPresenter : IInitializable, IDisposable
+    public class PlanetsCatalogPresenter : IInitializable, IDisposable
     {
         private readonly List<Planet> _planets;
         private readonly PlanetPresenter.Factory _factory;
@@ -17,7 +16,7 @@ namespace Game.UI.PlanetsCatalog
 
         private readonly Dictionary<Planet, PlanetPresenter> _presenters = new();
 
-        public CatalogPresenter(IEnumerable<Planet> planets, PlanetPresenter.Factory factory, PlanetView[] planetViews)
+        public PlanetsCatalogPresenter(List<Planet> planets, PlanetPresenter.Factory factory, PlanetView[] planetViews)
         {
             _planets = planets.ToList();
             _factory = factory;
@@ -26,7 +25,7 @@ namespace Game.UI.PlanetsCatalog
 
         public void Initialize()
         {
-            for (int i = 0; i < _planets.Count(); i++)
+            for (int i = 0; i < _planets.Count; i++)
             {
                 var planetPresenter = _factory.Create(_planets[i], _planetViews[i]);
                 planetPresenter.Initialize();

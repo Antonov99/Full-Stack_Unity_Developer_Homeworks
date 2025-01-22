@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Game.UI.Planets
+namespace Game.UI
 {
     public class PlanetPopupView:MonoBehaviour
     {
@@ -33,10 +33,10 @@ namespace Game.UI.Planets
         [SerializeField]
         private Button _upgradeButton;
         
-        private PlanetPopupPresenter _presenter;
+        private IPlanetPopupPresenter _presenter;
         
         [Inject]
-        public void Construct(PlanetPopupPresenter presenter)
+        public void Construct(IPlanetPopupPresenter presenter)
         {
             _presenter = presenter;
         }

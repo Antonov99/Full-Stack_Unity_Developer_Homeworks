@@ -1,10 +1,9 @@
 ﻿using System;
 using JetBrains.Annotations;
 using Modules.Planets;
-using UnityEngine;
 using Zenject;
 
-namespace Game.UI.Planets
+namespace Game.UI
 {
     [UsedImplicitly]
     public class PlanetPresenter : IInitializable, IDisposable
@@ -26,6 +25,7 @@ namespace Game.UI.Planets
             _planetView.OnHold += OnHold;
             _planet.OnUnlocked += OnUnlock;
             _planet.OnIncomeReady += OnReady;
+            _planet.OnGathered += OnGathered;
             _planet.OnIncomeTimeChanged += OnTimeChanged;
 
             Setup();
@@ -59,11 +59,19 @@ namespace Game.UI.Planets
         private void OnReady(bool value)
         {
             _planetView.ShowCoin(value);
+            _planetView.ShowProgressBar(!value);
+        }
+
+        private void OnGathered(int value)
+        {
+            _planetView.CollectCoin();
         }
         
         private void OnTimeChanged(float time)
         {
-            _planetView.UpdateTime(time.ToString());
+            int roundedTime = (int)time;
+            _planetView.UpdateTime($"{roundedTime/60}m:{roundedTime%60}s");
+            _planetView.UpdateProgressBar(_planet.IncomeProgress);
         }
 
         public void Dispose()

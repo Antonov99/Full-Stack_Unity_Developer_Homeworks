@@ -1,7 +1,7 @@
 ﻿using JetBrains.Annotations;
 using Zenject;
 
-namespace Game.UI.Planets
+namespace Game.UI
 {
     [UsedImplicitly]
     public sealed class PlanetPopupInstaller : Installer<PlanetPopupView, PlanetPopupInstaller>
@@ -18,7 +18,8 @@ namespace Game.UI.Planets
                 .NonLazy();
 
             this.Container
-                .Bind<PlanetPopupPresenter>()
+                .Bind<IPlanetPopupPresenter>()
+                .To<PlanetPopupPresenter>()
                 .AsSingle();
 
             this.Container
