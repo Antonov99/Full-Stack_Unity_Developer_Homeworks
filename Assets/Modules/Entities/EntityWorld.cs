@@ -33,8 +33,8 @@ namespace Modules.Entities
 
         private void Awake()
         {
-            if (this.autoRun)
-                this.ScanEntities();
+            if (autoRun)
+                ScanEntities();
         }
 
         private void ScanEntities()
@@ -44,7 +44,7 @@ namespace Modules.Entities
 
             _entities = new Dictionary<int, Entity>(entityCount);
             for (int i = 0; i < entityCount; i++)
-                this.Add(entities[i]);
+                Add(entities[i]);
         }
 
         public bool Has(int id)
@@ -74,7 +74,7 @@ namespace Modules.Entities
                 throw new Exception($"Entity with id {id} is already exists!");
 
             if (id == -1)
-                id = this.NextId();
+                id = NextId();
 
             entity.Id = id;
             _entities.Add(id, entity);
@@ -83,7 +83,7 @@ namespace Modules.Entities
         [Button]
         public bool Remove(Entity entity)
         {
-            return entity && this.Remove(entity.Id);
+            return entity && Remove(entity.Id);
         }
 
         public bool Remove(int entityId)
@@ -113,7 +113,7 @@ namespace Modules.Entities
             if (!_catalog.FindConfig(entityName, out EntityConfig config))
                 throw new KeyNotFoundException($"Entity with name {entityName} is not found!");
 
-            return this.Spawn(config, position, rotation, id);
+            return Spawn(config, position, rotation, id);
         }
 
         [Button]
@@ -124,7 +124,7 @@ namespace Modules.Entities
 
             _containers.TryGetValue(config.Type, out Transform container);
             Entity entity = Instantiate(config.Prefab, position, rotation, container);
-            this.Add(entity, id);
+            Add(entity, id);
             return entity;
         }
 
@@ -132,12 +132,12 @@ namespace Modules.Entities
         public void Destroy(Entity entity)
         {
             if (entity)
-                this.Destroy(entity.Id);
+                Destroy(entity.Id);
         }
 
         public void Destroy(int entityId)
         {
-            if (this.Remove(entityId, out Entity entity))
+            if (Remove(entityId, out Entity entity))
                 GameObject.Destroy(entity.gameObject);
         }
 
@@ -145,14 +145,14 @@ namespace Modules.Entities
         public void RemoveAll()
         {
             foreach (int entityId in _entities.Keys.ToArray())
-                this.Remove(entityId);
+                Remove(entityId);
         }
 
         [Button]
         public void DestroyAll()
         {
             foreach (int entityId in _entities.Keys.ToArray())
-                this.Destroy(entityId);
+                Destroy(entityId);
         }
 
         private int NextId()

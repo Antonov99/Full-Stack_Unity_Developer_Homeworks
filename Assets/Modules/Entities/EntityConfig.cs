@@ -24,7 +24,7 @@ namespace Modules.Entities
 #if UNITY_EDITOR
         private void OnValidate()
         {
-            this.Name = Prefab ? Prefab.name : string.Empty;
+            Name = Prefab ? Prefab.name : string.Empty;
             if (Prefab) Prefab._config = this;
         }
 #endif

@@ -16,8 +16,8 @@ namespace Game.Gameplay
         
         public override void InstallBindings()
         {
-            this.Container.Bind<EntityWorld>().FromComponentInHierarchy().AsSingle();
-            this.Container.Bind<EntityCatalog>().FromInstance(_catalog).AsSingle();
+            Container.Bind<EntityWorld>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<EntityCatalog>().FromInstance(_catalog).AsSingle();
         }
     }
 }

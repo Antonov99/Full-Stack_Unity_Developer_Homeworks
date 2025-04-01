@@ -20,16 +20,16 @@ namespace Game.Gameplay
 
         private void OnGUI()
         {
-            this.DrawSaveButton();
-            this.DrawLoadButton();
-            this.DrawVersionText();
+            DrawSaveButton();
+            DrawLoadButton();
+            DrawVersionText();
         }
 
         private void DrawLoadButton()
         {
             Rect button1Rect = new Rect(10, 50, 100, 30);
             if (GUI.Button(button1Rect, "Load Game"))
-                this.OnLoadClicked();
+                OnLoadClicked();
         }
 
         private void DrawVersionText()
@@ -62,11 +62,11 @@ namespace Game.Gameplay
         {
             Rect button2Rect = new Rect(10, 10, 100, 30);
             if (GUI.Button(button2Rect, "Save Game"))
-                this.OnSaveClicked();
+                OnSaveClicked();
         }
 
-        private void OnSaveClicked() => _presenter.Save(this.OnSaveResult);
-        private void OnLoadClicked() => _presenter.Load(_versionText, this.OnLoadResult);
+        private void OnSaveClicked() => _presenter.Save(OnSaveResult);
+        private void OnLoadClicked() => _presenter.Load(_versionText, OnLoadResult);
 
         private void OnSaveResult(bool success, int version)
         {

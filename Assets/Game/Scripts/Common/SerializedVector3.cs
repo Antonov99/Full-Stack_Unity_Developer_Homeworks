@@ -11,9 +11,9 @@ namespace SampleGame.Common
 
         public SerializedVector3(Vector3 vector)
         {
-            this.x = vector.x;
-            this.y = vector.y;
-            this.z = vector.z;
+            x = vector.x;
+            y = vector.y;
+            z = vector.z;
         }
         
         public static implicit operator SerializedVector3(Vector3 vector) =>
